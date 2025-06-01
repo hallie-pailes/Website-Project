@@ -1,8 +1,22 @@
 <html>
 <head>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles1.css" id="style">
 </head>
 <body>
 <h1>HELLO!</h1>
+<button type="button" onclick="mode()">Switch Modes</button>
+<script>
+  let daniel = false;
+  function mode(){
+    if (daniel){
+      document.getElementById("style").href = "styles1.css";
+      daniel = false;
+    }
+    else {
+      document.getElementById("style").href = "styles2.css";
+      daniel = true;
+    }
+  }
+</script>
 </body>
 </html>
