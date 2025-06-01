@@ -28,13 +28,16 @@
     .box { 
       background-color: white;
       width: 545px;
-      height: 985px;
+      height: 785px;
     }
   </style>
 </head>
 <body>
+  <div style="display: flex; gap: 10px; justify-content: flex-end;">
+    <p>Want to switch modes? -> </p>
+    <button type="button" class="button-1" onclick="mode()">Switch Modes</button>
+  </div>
   <h1 style='margin-top: 40px; text-align: center; font-size: 65px; font-family: "Baloo 2", sans-serif; font-weight: 700;'>HELLO!</h1>
-  <button type="button" class="button-1" onclick="mode()">Switch Modes</button>
   <script>
     let daniel = false;
     function mode(){
