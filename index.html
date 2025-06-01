@@ -25,23 +25,31 @@
       box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
       transform: translateY(-2px);
     }
+    .box { 
+      background-color: white;
+      width: 45px;
+      height: 185px;
+    }
   </style>
 </head>
 <body>
-<h1 style='margin-top: 40px; text-align: center; font-size: 35px; font-family: "Baloo 2", sans-serif; font-weight: 700;'>HELLO!</h1>
-<button type="button" class="button-1" onclick="mode()">Switch Modes</button>
-<script>
-  let daniel = false;
-  function mode(){
-    if (daniel){
-      document.getElementById("style").href = "styles1.css";
-      daniel = false;
+  <h1 style='margin-top: 40px; text-align: center; font-size: 65px; font-family: "Baloo 2", sans-serif; font-weight: 700;'>HELLO!</h1>
+  <button type="button" class="button-1" onclick="mode()">Switch Modes</button>
+  <script>
+    let daniel = false;
+    function mode(){
+      if (daniel){
+        document.getElementById("style").href = "styles1.css";
+        daniel = false;
+      }
+      else {
+        document.getElementById("style").href = "styles2.css";
+        daniel = true;
+      }
     }
-    else {
-      document.getElementById("style").href = "styles2.css";
-      daniel = true;
-    }
-  }
-</script>
+  </script>
+  <div class="box">
+    <h1 style='margin-top: 40px; text-align: center; font-size: 35px; font-family: "Baloo 2", sans-serif; font-weight: 700;'>box one</h1>
+  </div>
 </body>
 </html>
