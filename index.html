@@ -105,7 +105,7 @@
     // Initialize Realtime Database and get a reference to the service
     const db = firebase.database();
     const box = document.getElementById("text-box");
-    //const ref = db.ref("box");
+    const ref = db.ref("box");
     //first need text box to load stored data
     ref.once('value').then((snapshot) => {
       const text = snapshot.val();
@@ -115,7 +115,7 @@
     });
     
     function save() {
-      db.ref("box").set(box.value);
+      ref.set(box.value);
     }
   </script>
 </body>
