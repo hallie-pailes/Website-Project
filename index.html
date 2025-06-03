@@ -2,12 +2,6 @@
 <head>
   <link rel="stylesheet" href="styles1.css" id="style">
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap" rel="stylesheet">
-  
-   <!-- Firebase App (the core Firebase SDK) -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  
-  <!-- Firebase Realtime Database -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
   <style>
     .button-1 {
@@ -84,10 +78,18 @@
     </div>
   </div>
   
-  <!--Your web app's Firebase configuration-->
-  <textarea id="text-box" class="box" style="width: 600px; height: 300px;"> </textarea>
+  <textarea onload="loadText()" id="text-box" class="box" style="width: 600px; height: 300px;"> </textarea>
   <button onclick="save()">Save</button>
-  <script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-analytics.js";
+    import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-database.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     const firebaseConfig = {
       apiKey: "AIzaSyDWElmjK0hU6IJOfWEFjIdyuBgXTVHlcIo",
       authDomain: "blog-fe521.firebaseapp.com",
@@ -100,22 +102,21 @@
     };
   
     // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+    const app = initializeApp(firebaseConfig);
     
     // Initialize Realtime Database and get a reference to the service
-    const db = firebase.database();
+    //const db = firebase.database();
+    const db = getDatabase(app);
     const box = document.getElementById("text-box");
-    const ref = db.ref("box");
+    const ref = ref(db, "box");
     //first need text box to load stored data
-    ref.once('value').then((snapshot) => {
-      const text = snapshot.val();
-      if (text !== null) {
-        box.value = text;
-      }
+    onValue(ref, (snapshot) => {
+      const data = snapshot.val();
+      box.value = data;
     });
     
-    function save() {
-      ref.set(box.value);
+    window.save = function() { //attach save function to window to make global
+      set(ref, box.value);
     }
   </script>
 </body>
