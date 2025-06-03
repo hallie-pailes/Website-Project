@@ -110,24 +110,23 @@
   const db = firebase.database();
 </script>
   <textarea id="globalText" style="width:600px; height:300px;"></textarea>
+<button onclick="saveText()">Save</button>
+
 <script>
   const textarea = document.getElementById('globalText');
   const textRef = db.ref('sharedText');
 
-  let initialized = false;
-
-  // Load the text from Firebase first
-  textRef.on('value', (snapshot) => {
-    textarea.value = snapshot.val() || '';
-    initialized = true;
-  });
-
-  // Only write to Firebase *after* we've loaded initial value
-  textarea.addEventListener('input', () => {
-    if (initialized) {
-      textRef.set(textarea.value);
+  // Load saved value on page load
+  textRef.once('value').then((snapshot) => {
+    const text = snapshot.val();
+    if (text !== null) {
+      textarea.value = text;
     }
   });
+
+  function saveText() {
+    textRef.set(textarea.value);
+  }
 </script>
 </body>
 </html>
