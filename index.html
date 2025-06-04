@@ -78,7 +78,7 @@
     </div>
   </div>
   
-  <textarea onload="loadText()" id="text-box" class="box" style="width: 600px; height: 300px;"> </textarea>
+  <textarea id="text-box" class="box" style="width: 600px; height: 300px;"> </textarea>
   <button onclick="save()">Save</button>
   <script type="module">
     // Import the functions you need from the SDKs you need
@@ -108,15 +108,15 @@
     //const db = firebase.database();
     const db = getDatabase(app);
     const box = document.getElementById("text-box");
-    const ref = ref(db, "box");
+    const myRef = ref(db, "box");
     //first need text box to load stored data
-    onValue(ref, (snapshot) => {
+    onValue(myRef, (snapshot) => {
       const data = snapshot.val();
       box.value = data;
     });
     
     window.save = function() { //attach save function to window to make global
-      set(ref, box.value);
+      set(myRef, box.value);
     }
   </script>
 </body>
