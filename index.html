@@ -65,7 +65,7 @@
     <img style="width: 200px; height: auto; transform: scaleX(-1);" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0532e0c4-7adb-4a5d-aba1-c0adab544aa2/dfzovhw-6dc81c78-9a69-43bb-a2fa-da0fbc98a7a1.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzA1MzJlMGM0LTdhZGItNGE1ZC1hYmExLWMwYWRhYjU0NGFhMlwvZGZ6b3Zody02ZGM4MWM3OC05YTY5LTQzYmItYTJmYS1kYTBmYmM5OGE3YTEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.vMySqvQc9GZH5uMXxOURt0xq8F8DfTVgqsvJvkxryiA" alt="Goose">
     <div contenteditable="true" id="text-box" class="box" style="width: 850px; height: 285px;">
       <h1 contenteditable="false" style='margin-top: 15px; text-align: center; font-size: 35px; font-family: "Baloo 2", sans-serif; font-weight: 700;'>Welcome!</h1>
-      <p style='text-align: center;'></p>
+      <p style='text-align: center;'> </p>
     </div>
     <img style="width: 200px; height: auto;" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0532e0c4-7adb-4a5d-aba1-c0adab544aa2/dfzovhw-6dc81c78-9a69-43bb-a2fa-da0fbc98a7a1.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzA1MzJlMGM0LTdhZGItNGE1ZC1hYmExLWMwYWRhYjU0NGFhMlwvZGZ6b3Zody02ZGM4MWM3OC05YTY5LTQzYmItYTJmYS1kYTBmYmM5OGE3YTEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.vMySqvQc9GZH5uMXxOURt0xq8F8DfTVgqsvJvkxryiA" alt="Goose">
   </div>
@@ -112,11 +112,11 @@
     //first need text box to load stored data
     onValue(myRef, (snapshot) => {
       const data = snapshot.val();
-      box.value = data;
+      box.innerHTML = data; //value for textbox, innerHTML for div
     });
     
     window.save = function() { //attach save function to window to make global
-      set(myRef, box.value);
+      set(myRef, box.innerHTML);
     }
   </script>
 </body>
